@@ -13,10 +13,14 @@ public class TicTacToe {
             game.printBoard(board);
             System.out.print("Player " + p + " Enter Position : ");
             int n = sc.nextInt();
-            if (game.placeSymbol(board, n, p)==false ) {
-                System.out.println("Invalid Move! Try Again.");
+            try {
+                game.placeSymbol(board, n, p);
+            
+            } catch (WrongPlaceException e) {
+                System.err.println(e);
                 continue;
             }
+               
             if (game.checkWinner(board, p)) {
                 game.printBoard(board);
                 System.out.println("Player " + p + " Wins!");

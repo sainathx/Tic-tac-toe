@@ -1,3 +1,5 @@
+
+
 class Opt {
 
    //  game Bord Printing 
@@ -11,19 +13,17 @@ class Opt {
         System.out.println();
         
     }
-
     // For Pacacing Players 
-    boolean placeSymbol(char[][] board, int n, char symbol) {
+    void placeSymbol(char[][] board, int n, char symbol) throws WrongPlaceException {
         if (n < 1 || n > 9) {
-            return false;
+            throw new WrongPlaceException();
         }
         int r = (n- 1) / 3;
         int c = (n - 1) % 3;
         if (board[r][c] == 'X' || board[r][c] == 'O') {
-            return false;
+            throw new WrongPlaceException();
         }
         board[r][c] = symbol;
-        return true;
     }
 
     // Checking Who is Win or Not 
